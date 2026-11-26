@@ -33,9 +33,17 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
                     <li class="nav-item">
-                        <a href="{{ route('admin.home') }}" class="nav-link active">
+                        <a href="{{ route('admin.home') }}"
+                           class="nav-link {{ request()->routeIs('admin.home') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Главная</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.countries.index') }}"
+                           class="nav-link {{ request()->routeIs('admin.countries.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>Страны</p>
                         </a>
                     </li>
                 </ul>
@@ -48,7 +56,16 @@
             <div class="container-fluid"><h1>@yield('title')</h1></div>
         </section>
         <section class="content">
-            <div class="container-fluid">@yield('content')</div>
+            <div class="container-fluid">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+
+                @yield('content')
+            </div>
         </section>
     </div>
 
