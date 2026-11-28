@@ -60,7 +60,10 @@
                             <td>
                                 <a href="{{ route('admin.films.categories.index', $film) }}"
                                    class="btn btn-sm btn-secondary">Жанры</a>
-                                  class="btn btn-sm btn-warning">Оценки</a>
+                                <a href="{{ route('admin.reviews.index', ['film_id' => $film->id]) }}"
+                                   class="btn btn-sm btn-warning">Отзывы</a>
+                                <a href="{{ route('admin.ratings.index', ['film_id' => $film->id]) }}"
+                                   class="btn btn-sm btn-warning">Оценки</a>
                                 <a href="{{ route('admin.films.edit', $film) }}"
                                    class="btn btn-sm btn-info">Изменить</a>
                                 <form action="{{ route('admin.films.destroy', $film) }}" method="POST"

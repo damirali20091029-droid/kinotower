@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\FilmController;
 use App\Http\Controllers\Admin\CategoryFilmController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ReviewFilmController;
+use App\Http\Controllers\Admin\RatingFilmController;
 
 Route::middleware('guest:admin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('admin.login');
@@ -31,4 +32,6 @@ Route::patch('users/{user}/restore', [UserController::class, 'restore'])->name('
 Route::get('reviews', [ReviewFilmController::class, 'index'])->name('reviews.index');
 Route::patch('reviews/{review}/approved', [ReviewFilmController::class, 'approved'])->name('reviews.approved');
 Route::delete('reviews/{review}', [ReviewFilmController::class, 'destroy'])->name('reviews.destroy');
+Route::get('ratings', [RatingFilmController::class, 'index'])->name('ratings.index');
+Route::delete('ratings/{rating}', [RatingFilmController::class, 'destroy'])->name('ratings.destroy');
 });
