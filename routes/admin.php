@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FilmController;
 use App\Http\Controllers\Admin\CategoryFilmController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ReviewFilmController;
 
 Route::middleware('guest:admin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('admin.login');
@@ -27,4 +28,7 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::patch('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore')->withTrashed();
+Route::get('reviews', [ReviewFilmController::class, 'index'])->name('reviews.index');
+Route::patch('reviews/{review}/approved', [ReviewFilmController::class, 'approved'])->name('reviews.approved');
+Route::delete('reviews/{review}', [ReviewFilmController::class, 'destroy'])->name('reviews.destroy');
 });
