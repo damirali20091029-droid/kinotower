@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CountryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FilmController;
 use App\Http\Controllers\Admin\CategoryFilmController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::middleware('guest:admin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('admin.login');
@@ -23,4 +24,7 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::resource('countries', CountryController::class)->except(['show']);
     Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resource('films', FilmController::class)->except(['show']);
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::patch('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore')->withTrashed();
 });
