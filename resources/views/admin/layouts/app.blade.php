@@ -53,6 +53,13 @@
                             <p>Жанры</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                     <a href="{{ route('admin.films.index') }}"
+       class="nav-link {{ request()->routeIs('admin.films.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-film"></i>
+        <p>Фильмы</p>
+    </a>
+</li>
                 </ul>
             </nav>
         </div>

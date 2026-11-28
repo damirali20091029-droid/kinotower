@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CountryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FilmController;
 
 Route::middleware('guest:admin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('admin.login');
@@ -18,4 +19,5 @@ Route::middleware('auth:admin')->group(function () {
 Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::resource('countries', CountryController::class)->except(['show']);
     Route::resource('categories', CategoryController::class)->except(['show']);
+    Route::resource('films', FilmController::class)->except(['show']);
 });
