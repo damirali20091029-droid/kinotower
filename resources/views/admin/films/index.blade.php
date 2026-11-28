@@ -44,7 +44,7 @@
                         <th>Год</th>
                         <th>Мин.</th>
                         <th>Возраст</th>
-                        <th style="width: 220px">Действия</th>
+                        <th style="width: 380px">Действия</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +58,11 @@
                             <td>{{ $film->duration }}</td>
                             <td>{{ $film->age }}+</td>
                             <td>
-                                <a href="{{ route('admin.films.edit', $film) }}" class="btn btn-sm btn-info">Изменить</a>
+                                <a href="{{ route('admin.films.categories.index', $film) }}"
+                                   class="btn btn-sm btn-secondary">Жанры</a>
+                                  class="btn btn-sm btn-warning">Оценки</a>
+                                <a href="{{ route('admin.films.edit', $film) }}"
+                                   class="btn btn-sm btn-info">Изменить</a>
                                 <form action="{{ route('admin.films.destroy', $film) }}" method="POST"
                                       class="d-inline" onsubmit="return confirm('Удалить фильм?')">
                                     @csrf
